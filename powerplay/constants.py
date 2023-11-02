@@ -4,3 +4,5 @@ class Constants:
 
         self.WINWIDTH = 800
         self.WINHEIGHT = 600
+
+        self.PLAYER_WIDTH = 50
