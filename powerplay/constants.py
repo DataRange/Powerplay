@@ -6,3 +6,4 @@ class Constants:
         self.WINHEIGHT = 600
 
         self.PLAYER_WIDTH = 50
+        self.MAX_PLAYER_VELOCITY = 10

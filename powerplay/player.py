@@ -39,8 +39,8 @@ class Player:
         else:
             if abs(self.y_velocity) > 0: self.y_velocity += -1 if self.y_velocity > 0 else 1
 
-        self.x_velocity = numpy.clip(self.x_velocity, -3, 3)
-        self.y_velocity = numpy.clip(self.y_velocity, -3, 3)
+        self.x_velocity = numpy.clip(self.x_velocity, -self.constants.MAX_PLAYER_VELOCITY, self.constants.MAX_PLAYER_VELOCITY)
+        self.y_velocity = numpy.clip(self.y_velocity, -self.constants.MAX_PLAYER_VELOCITY, self.constants.MAX_PLAYER_VELOCITY)
 
         self.x += self.x_velocity
         self.y += self.y_velocity
