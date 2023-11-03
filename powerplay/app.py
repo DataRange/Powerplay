@@ -22,39 +22,50 @@ class App:
 
         while True:
 
-            for event in pygame.event.get():
+            self.eventHandler()
+            self.updateHandler()
+            self.screenRefresh()
 
-                if event.type == pygame.QUIT:
+    def eventHandler(self):
 
-                    pygame.quit()
-                    sys.exit()
+        for event in pygame.event.get():
 
-                elif event.type == pygame.KEYDOWN:
+            if event.type == pygame.QUIT:
 
-                    if event.key == pygame.K_RIGHT: self.player.set_right(True)
-                    
-                    elif event.key == pygame.K_LEFT: self.player.set_left(True)
+                pygame.quit()
+                sys.exit()
 
-                    elif event.key == pygame.K_UP: self.player.set_up(True)
+            elif event.type == pygame.KEYDOWN:
 
-                    elif event.key == pygame.K_DOWN: self.player.set_down(True)
+                if event.key == pygame.K_RIGHT: self.player.set_right(True)
+                
+                elif event.key == pygame.K_LEFT: self.player.set_left(True)
 
-                elif event.type == pygame.KEYUP:
+                elif event.key == pygame.K_UP: self.player.set_up(True)
 
-                    if event.key == pygame.K_RIGHT: self.player.set_right(False)
-                    
-                    elif event.key == pygame.K_LEFT: self.player.set_left(False)
+                elif event.key == pygame.K_DOWN: self.player.set_down(True)
 
-                    elif event.key == pygame.K_UP: self.player.set_up(False)
+            elif event.type == pygame.KEYUP:
 
-                    elif event.key == pygame.K_DOWN: self.player.set_down(False)
+                if event.key == pygame.K_RIGHT: self.player.set_right(False)
+                
+                elif event.key == pygame.K_LEFT: self.player.set_left(False)
 
-            self.player.update()
+                elif event.key == pygame.K_UP: self.player.set_up(False)
 
-            self.window.fill((200, 200, 200))
-            self.player.draw()
-            pygame.display.flip()
-            self.clock.tick(60)
+                elif event.key == pygame.K_DOWN: self.player.set_down(False)
+
+    def updateHandler(self):
+
+        self.player.update()
+
+    def screenRefresh(self):
+
+        self.window.fill((200, 200, 200))
+        self.player.draw()
+        pygame.display.flip()
+        self.clock.tick(60)
+
 
 if __name__ == '__main__':
     app = App()
