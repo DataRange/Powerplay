@@ -22,12 +22,22 @@ class Player:
         self.player_up = False
         self.player_down = False
 
+        self.hp = self.constants.MAX_HP
+
     def set_right(self, right): self.player_right = right
     def set_left(self, left): self.player_left = left
     def set_up(self, up): self.player_up = up
     def set_down(self, down): self.player_down = down
 
+    def get_hp(self): return self.hp
+    def get_coordinates(self): return (
+        round(self.x/self.constants.PLAYER_WIDTH), 
+        round(self.y/self.constants.PLAYER_WIDTH)
+    )
+
     def update(self):
+
+        self.rect = pygame.Rect(self.x, self.y, self.constants.PLAYER_WIDTH, self.constants.PLAYER_WIDTH)
 
         if self.player_right: self.x_velocity += 1
         elif self.player_left: self.x_velocity -= 1
@@ -47,5 +57,4 @@ class Player:
 
     def draw(self):
 
-        self.rect = pygame.Rect(self.x, self.y, self.constants.PLAYER_WIDTH, self.constants.PLAYER_WIDTH)
         pygame.draw.rect(self.window, (255, 0, 0), self.rect)
