@@ -5,6 +5,7 @@ from constants import Constants
 from player import Player
 from debug_gui import DebugGUI
 from inventory import Inventory
+from items import *
 
 class App:
 
@@ -21,8 +22,17 @@ class App:
         self.player = Player(self)
         self.debug = DebugGUI(self)
         self.inventory = Inventory(self)
+        self.inventory.add_item(Rock(self))
 
         self.show_gui = False
+
+        self.keybinds = {
+            "right": pygame.K_RIGHT,
+            "left": pygame.K_LEFT,
+            "up": pygame.K_UP,
+            "down": pygame.K_DOWN,
+            "debug": pygame.K_TAB,
+        }
 
     def run(self):
 
@@ -43,30 +53,31 @@ class App:
 
             elif event.type == pygame.KEYDOWN:
 
-                if event.key == pygame.K_RIGHT: self.player.set_right(True)
+                if event.key == self.keybinds["right"]: self.player.set_right(True)
                 
-                elif event.key == pygame.K_LEFT: self.player.set_left(True)
+                elif event.key == self.keybinds["left"]: self.player.set_left(True)
 
-                elif event.key == pygame.K_UP: self.player.set_up(True)
+                elif event.key == self.keybinds["up"]: self.player.set_up(True)
 
-                elif event.key == pygame.K_DOWN: self.player.set_down(True)
+                elif event.key == self.keybinds["down"]: self.player.set_down(True)
 
-                elif event.key == pygame.K_TAB: self.show_gui = True
+                elif event.key == self.keybinds["debug"]: self.show_gui = True
 
             elif event.type == pygame.KEYUP:
 
-                if event.key == pygame.K_RIGHT: self.player.set_right(False)
+                if event.key == self.keybinds["right"]: self.player.set_right(False)
                 
-                elif event.key == pygame.K_LEFT: self.player.set_left(False)
+                elif event.key == self.keybinds["left"]: self.player.set_left(False)
 
-                elif event.key == pygame.K_UP: self.player.set_up(False)
+                elif event.key == self.keybinds["up"]: self.player.set_up(False)
 
-                elif event.key == pygame.K_DOWN: self.player.set_down(False)
+                elif event.key == self.keybinds["down"]: self.player.set_down(False)
 
-                elif event.key == pygame.K_TAB: self.show_gui = False
+                elif event.key == self.keybinds["debug"]: self.show_gui = False
 
     def updateHandler(self):
 
+        self.inventory.update()
         self.player.update()
         self.debug.update()
 
