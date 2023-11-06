@@ -21,6 +21,8 @@ class Constants:
         self.INVENTORY_GUI_X = 25
         self.INVENTORY_GUI_Y = self.WINHEIGHT - (25 + self.INVENTORY_GUI_WIDTH)
 
+        self.HOTBAR_ITEM_QUANTITY = 4
+
 class Image_Maps:
 
     EMPTY_MAP = [
