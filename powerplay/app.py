@@ -4,6 +4,7 @@ import pygame
 from constants import Constants
 from constants import Level_1
 from player import Player
+from castle import Castle
 from sidebar import Sidebar
 from debug_gui import DebugGUI
 from inventory import Inventory
@@ -26,6 +27,7 @@ class App:
         self.clock = pygame.time.Clock()
 
         self.player = Player(self)
+        self.castle = Castle(self)
         self.sidebar = Sidebar(self)
         self.debug = DebugGUI(self)
         self.inventory = Inventory(self)
@@ -138,6 +140,7 @@ class App:
         self.forge.draw()
         self.sidebar.draw()
         self.inventory.draw()
+        self.castle.draw()
         for e in self.enemies:
             e.draw()
         self.player.draw()
