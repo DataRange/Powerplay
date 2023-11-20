@@ -9,6 +9,7 @@ from inventory import Inventory
 from enemy import Enemy
 from items import *
 from gui import GUI, GUI_Data
+from castle import Castle
 
 class App:
 
@@ -25,7 +26,6 @@ class App:
 
         self.player = Player(self)
         self.castle = Castle(self, self.level_1_constants.CASTLE_HP)
-        self.sidebar = Sidebar(self)
         self.debug = DebugGUI(self)
         self.inventory = Inventory(self)
         self.inventory.add_item(Wood(self))
@@ -111,7 +111,6 @@ class App:
     def screenRefresh(self):
 
         self.window.fill((200, 200, 200))
-        self.forge.draw()
         self.sidebar.draw()
         self.castle.draw()
         for e in self.enemies:
