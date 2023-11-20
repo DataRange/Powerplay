@@ -27,9 +27,6 @@ class Constants:
         self.INVENTORY_GUI_X = 265
         self.INVENTORY_GUI_Y = self.WINHEIGHT - (25 + self.INVENTORY_GUI_WIDTH)
 
-        self.FORGE_GUI_X = int((self.WINWIDTH - self.GUI_SIZE_STANDARD[0]) / 2 + self.INVENTORY_GUI_WIDTH)
-        self.FORGE_GUI_Y = int((self.WINHEIGHT - self.GUI_SIZE_STANDARD[1]) / 2 + self.INVENTORY_GUI_WIDTH)
-
         self.HOTBAR_ITEM_QUANTITY = 4
 
         self.SIDEBAR_WIDTH = 140
@@ -38,9 +35,8 @@ class Constants:
         self.CASTLE_X = 250
         self.CASTLE_Y = 0
         
-        self.INTERACT_FORGE = 0
-        
 class Level_1:
+    
     def __init__(self):
         self.constants = Constants()
 

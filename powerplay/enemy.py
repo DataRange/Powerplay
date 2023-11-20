@@ -50,7 +50,6 @@ class Enemy:
 
     def draw(self):
         if(self.health > 0):
-            self.window.blit(pygame.image.load("assets/Enemy_Melee.png"), (self.x+self.constants.SIDEBAR_WIDTH, self.y))
             idy = self.y
             for y in range(self.constants.ITEM_PIXELS):
                 idx = self.x

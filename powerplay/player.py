@@ -65,7 +65,6 @@ class Player:
 
     def draw(self):
 
-        self.window.blit(pygame.image.load("assets/Reticle.png"), (self.x-100, self.y-100))
         idy = self.y
         for y in range(len(self.item_img[1])):
             idx = self.x

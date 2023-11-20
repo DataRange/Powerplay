@@ -2,7 +2,7 @@ import pygame
 
 class GUI:
 
-    def __init__(self, game, dimensions, bg_color, dat):
+    def __init__(self, game, dimensions, bg_color, dat, coords=None):
 
         self.game = game
         self.window = game.window
@@ -14,13 +14,20 @@ class GUI:
         self.dimensions = dimensions
         self.width = self.dimensions[0]
         self.height = self.dimensions[1]
+
+        if not coords:
+            cdx = (self.constants.WINWIDTH - self.width) / 2
+            cdy = (self.constants.WINHEIGHT - self.height) / 2
+        else:
+            cdx = coords[0]
+            cdy = coords[1]
         
         self.gui = pygame.Rect(
-            (self.constants.WINWIDTH - self.width) / 2,
-            (self.constants.WINHEIGHT - self.height) / 2,
+            cdx,
+            cdy,
             self.width,
             self.height,
-        ) # -700 -1400
+        )
 
     def draw(self):
 
