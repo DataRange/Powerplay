@@ -35,9 +35,12 @@ class Player:
         round(self.y/self.constants.PLAYER_WIDTH)
     )
 
+    def get_rect(self): return self.rect
+
     def update(self):
 
-        self.rect = pygame.Rect(self.x, self.y, self.constants.PLAYER_WIDTH, self.constants.PLAYER_WIDTH)
+        self.rect.x = self.x
+        self.rect.y = self.y
 
         if self.player_right: self.x_velocity += 1
         elif self.player_left: self.x_velocity -= 1

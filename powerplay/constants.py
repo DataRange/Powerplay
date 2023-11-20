@@ -15,6 +15,8 @@ class Constants:
 
         self.GUI_TEXT_SIZE = 28
         self.TEXT_FONT = "txt"
+        self.GUI_BORDER_RADIUS = 3
+        self.GUI_SIZE_STANDARD = (600, 480)
 
         self.ITEM_TILE_WIDTH = 5
         self.ITEM_PIXELS = 8
@@ -24,6 +26,9 @@ class Constants:
         self.INVENTORY_GUI_WIDTH = self.ITEM_WIDTH + (self.INVENTORY_GUI_BORDER_WIDTH * 2) + (self.ITEM_TILE_WIDTH * 2)
         self.INVENTORY_GUI_X = 265
         self.INVENTORY_GUI_Y = self.WINHEIGHT - (25 + self.INVENTORY_GUI_WIDTH)
+
+        self.FORGE_GUI_X = int((self.WINWIDTH - self.GUI_SIZE_STANDARD[0]) / 2 + self.INVENTORY_GUI_WIDTH)
+        self.FORGE_GUI_Y = int((self.WINHEIGHT - self.GUI_SIZE_STANDARD[1]) / 2 + self.INVENTORY_GUI_WIDTH)
 
         self.HOTBAR_ITEM_QUANTITY = 4
 
@@ -42,6 +47,7 @@ class Level_1:
         self.MELEE_ENEMY_X = [100,200,300,400,500,600]
 
 
+        self.INTERACT_FORGE = 0
 
 class Image_Maps:
 
