@@ -2,11 +2,16 @@ import pygame
 import random
 import math
 
+from constants import Image_Maps
+
 class Enemy:
     def __init__(self, game, x, y):
 
         self.constants = game.constants 
         self.window = game.window
+
+        self.item_color = Image_Maps.ENEMY_MAP[0]
+        self.item_img = Image_Maps.ENEMY_MAP[1]
 
         self.x = x
         self.y = y
@@ -28,15 +33,31 @@ class Enemy:
         else:   
             randomGen = random.randint(0,5)
             randomMove = random.randint(self.constants.MAX_ENEMY_MOVE - 2, self.constants.MAX_ENEMY_MOVE)
-            if(randomGen < 2 and self.y > 20):
-                self.y += randomMove
+            if(randomGen < 3):
+                if(self.getDistance(self.x, self.y + randomMove, self.constants.CASTLE_X, self.constants.CASTLE_Y) < self.getDistance(self.x, self.y - randomMove, self.constants.CASTLE_X, self.constants.CASTLE_Y)):
+                    self.y += randomMove
+                else:
+                    self.y -= randomMove
             else:
                 if(self.getDistance(self.x + randomMove, self.y, self.constants.CASTLE_X, self.constants.CASTLE_Y) < self.getDistance(self.x - randomMove, self.y, self.constants.CASTLE_X, self.constants.CASTLE_Y)):
+                    if(randomGen == 5):
+                        randomMove + 10
                     self.x += randomMove
                 else:
+                    if(randomGen == 5):
+                        randomMove + 10
                     self.x -= randomMove
 
     def draw(self):
         if(self.health > 0):
-            self.window.blit(pygame.image.load("powerplay/assets/Enemy_Melee.png"), (self.x+self.constants.SIDEBAR_WIDTH, self.y))
-        
+                    idy = self.y
+                    for y in range(self.constants.ITEM_PIXELS):
+                        idx = self.x
+                        for x in range(self.constants.ITEM_PIXELS):
+                            if self.item_img[y][x] > 0:
+                                pygame.draw.rect(
+                                    self.window, self.item_color[self.item_img[y][x] - 1], pygame.Rect(
+                                        idx, idy, self.constants.ITEM_TILE_WIDTH, self.constants.ITEM_TILE_WIDTH
+                                    ))
+                            idx += self.constants.ITEM_TILE_WIDTH
+                        idy += self.constants.ITEM_TILE_WIDTH

@@ -33,7 +33,7 @@ class App:
 
         self.tempEnemy = Enemy(self, 0, 0)
         self.enemies = []
-        self.generateEnemies( self.level_1_constants.MELEE_ENEMY_X)
+        self.generateEnemies(self.level_1_constants.MELEE_ENEMY_X)
 
         self.show_gui = False
         self.init_gui()
@@ -136,11 +136,11 @@ class App:
 
         self.window.fill((200, 200, 200))
         self.forge.draw()
-        self.player.draw()
         self.sidebar.draw()
         self.inventory.draw()
         for e in self.enemies:
             e.draw()
+        self.player.draw()
 
         if self.show_gui: self.debug.draw()
         if self.selected_gui >= 0:
@@ -150,7 +150,7 @@ class App:
 
     def generateEnemies(self, list):
         for xCoord in list:
-            self.tempEnemy = Enemy(self, xCoord, 200) 
+            self.tempEnemy = Enemy(self, xCoord, self.level_1_constants.MELEE_ENEMY_Y) 
             self.enemies.append(self.tempEnemy)
 
 if __name__ == '__main__':
