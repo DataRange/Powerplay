@@ -58,7 +58,7 @@ class Player:
         self.x_velocity = numpy.clip(self.x_velocity, -self.constants.MAX_PLAYER_VELOCITY, self.constants.MAX_PLAYER_VELOCITY)
         self.y_velocity = numpy.clip(self.y_velocity, -self.constants.MAX_PLAYER_VELOCITY, self.constants.MAX_PLAYER_VELOCITY)
 
-        if((self.x + self.x_velocity) < self.constants.WINWIDTH and (self.x + self.x_velocity) > self.constants.SIDEBAR_WIDTH):
+        if((self.x + self.x_velocity) < self.constants.WINWIDTH and (self.x + self.x_velocity) > 0):
             self.x += self.x_velocity
         if(self.y + self.y_velocity < 600 and self.y +self.y_velocity > 0):
             self.y += self.y_velocity

@@ -22,6 +22,8 @@ class Castle:
     def hurt(self, dmg):
         self.health -= dmg
         self.last = self.now
+    
+    def get_hp(self): return self.health
 
     def draw(self):
         self.now += self.clock.get_time()
@@ -30,9 +32,9 @@ class Castle:
         else:
             self.item_color = Image_Maps.CASTLE_MAP[0]
         if(self.health > 0):
-            idy = self.y
+            idy = self.y - 50
             for y in range(len(self.item_img[1])):
-                idx = self.x
+                idx = self.x - 50
                 for x in range(len(self.item_img[1])):
                     if self.item_img[y][x] > 0:
                         pygame.draw.rect(

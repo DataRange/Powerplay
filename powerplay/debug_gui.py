@@ -7,6 +7,7 @@ class DebugGUI:
         self.game = game
         self.window = game.window
         self.constants = game.constants
+        self.castle = game.castle
         self.player = game.player
 
         self.font = pygame.font.SysFont(self.constants.TEXT_FONT, self.constants.GUI_TEXT_SIZE, True)
@@ -16,7 +17,7 @@ class DebugGUI:
     def update(self):
 
         self.text = [
-            f"HP: {self.player.get_hp()}/{self.constants.MAX_HP}",
+            f"HP: {self.castle.get_hp()}",
             f"X: {self.player.get_coordinates()[0]} Y: {self.player.get_coordinates()[1]}",
         ]
 

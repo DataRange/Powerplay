@@ -29,6 +29,7 @@ class App:
         self.debug = DebugGUI(self)
         self.inventory = Inventory(self)
         self.inventory.add_item(Wood(self))
+        self.inventory.add_item(Rock(self))
 
         self.sidebar_dat = GUI_Data()
         self.sidebar = GUI(
@@ -52,7 +53,7 @@ class App:
             "up": pygame.K_UP,
             "down": pygame.K_DOWN,
             "sidebar": pygame.K_TAB,
-            "interact": pygame.K_SPACE,
+            "interact": pygame.K_SPACE
         }
 
     def init_gui(self):
@@ -113,7 +114,6 @@ class App:
     def screenRefresh(self):
 
         self.window.fill((200, 200, 200))
-        self.sidebar.draw()
         self.castle.draw()
         for e in self.enemies:
             e.draw()

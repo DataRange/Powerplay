@@ -32,8 +32,8 @@ class Constants:
         self.SIDEBAR_WIDTH = 140
         self.SIDEBAR_HEIGHT = 800
 
-        self.CASTLE_X = 400
-        self.CASTLE_Y = 0
+        self.CASTLE_X = 350
+        self.CASTLE_Y = 50
         
 class Level_1:
     
@@ -42,7 +42,7 @@ class Level_1:
 
         self.CASTLE_HP = 100
 
-        self.MELEE_ENEMY_X = [200, 300, 400, 500, 600, 700]
+        self.MELEE_ENEMY_X = [0, 100, 200, 300, 400, 500, 600, 700]
         self.MELEE_ENEMY_Y = 600
 
 

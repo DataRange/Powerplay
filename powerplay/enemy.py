@@ -29,7 +29,7 @@ class Enemy:
         self.health = 0
 
     def update(self):
-        if(self.getDistance(self.x, self.y, self.constants.CASTLE_X, self.constants.CASTLE_Y) < 100 and self.health != 0):#implement a castle hp decrease here
+        if(self.getDistance(self.x, self.y, self.constants.CASTLE_X, self.constants.CASTLE_Y) < 50 and self.health != 0):#implement a castle hp decrease here
             self.castle.hurt(self.health)
             self.Death()
 
@@ -53,9 +53,9 @@ class Enemy:
 
     def draw(self):
         if(self.health > 0):
-            idy = self.y
+            idy = self.y-self.constants.ITEM_PIXELS
             for y in range(self.constants.ITEM_PIXELS):
-                idx = self.x
+                idx = self.x-self.constants.ITEM_PIXELS
                 for x in range(self.constants.ITEM_PIXELS):
                     if self.item_img[y][x] > 0:
                         pygame.draw.rect(
