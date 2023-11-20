@@ -11,8 +11,8 @@ class Player:
 
         self.rect = pygame.Rect(0, 0, self.constants.PLAYER_WIDTH, self.constants.PLAYER_WIDTH)
 
-        self.x = 0
-        self.y = 0
+        self.x = self.constants.SIDEBAR_WIDTH + self.constants.PLAYER_WIDTH
+        self.y = self.constants.PLAYER_WIDTH
 
         self.x_velocity = 0
         self.y_velocity = 0
@@ -52,9 +52,11 @@ class Player:
         self.x_velocity = numpy.clip(self.x_velocity, -self.constants.MAX_PLAYER_VELOCITY, self.constants.MAX_PLAYER_VELOCITY)
         self.y_velocity = numpy.clip(self.y_velocity, -self.constants.MAX_PLAYER_VELOCITY, self.constants.MAX_PLAYER_VELOCITY)
 
-        self.x += self.x_velocity
-        self.y += self.y_velocity
+        if((self.x + self.x_velocity) < self.constants.WINWIDTH and (self.x + self.x_velocity) > self.constants.SIDEBAR_WIDTH):
+            self.x += self.x_velocity
+        if(self.y + self.y_velocity < 600 and self.y +self.y_velocity > 0):
+            self.y += self.y_velocity
 
     def draw(self):
 
-        pygame.draw.rect(self.window, (255, 0, 0), self.rect)
+        self.window.blit(pygame.image.load("powerplay/assets/Reticle.png"), (self.x-100, self.y-100))
