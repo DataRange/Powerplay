@@ -15,17 +15,17 @@ class Castle:
         self.x = self.constants.CASTLE_X
         self.y = self.constants.CASTLE_Y
 
-        self.cooldown = 3
+        self.cooldown = 300
         self.last = -300
+        self.now = 0
     
     def hurt(self, dmg):
         self.health -= dmg
-        self.last = self.clock.get_time()
+        self.last = self.now
 
     def draw(self):
-        now = self.clock.get_time()
-        print(now)
-        if ((now - self.last) < self.cooldown):
+        self.now += self.clock.get_time()
+        if ((self.now - self.last) < self.cooldown):
             self.item_color = Image_Maps.HURT_CASTLE_MAP[0]
         else:
             self.item_color = Image_Maps.CASTLE_MAP[0]

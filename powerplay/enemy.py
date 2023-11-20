@@ -29,14 +29,14 @@ class Enemy:
         self.health = 0
 
     def update(self):
-        if(self.getDistance(self.x, self.y, self.constants.CASTLE_X, self.constants.CASTLE_Y) < 100):#implement a castle hp decrease here
+        if(self.getDistance(self.x, self.y, self.constants.CASTLE_X, self.constants.CASTLE_Y) < 100 and self.health != 0):#implement a castle hp decrease here
             self.castle.hurt(self.health)
             self.Death()
 
         else:   
-            randomGen = random.randint(0,5)
+            randomGen = random.randint(0,9)
             randomMove = random.randint(self.constants.MAX_ENEMY_MOVE - 2, self.constants.MAX_ENEMY_MOVE)
-            if(randomGen < 3):
+            if(randomGen < 7):
                 if(self.getDistance(self.x, self.y + randomMove, self.constants.CASTLE_X, self.constants.CASTLE_Y) < self.getDistance(self.x, self.y - randomMove, self.constants.CASTLE_X, self.constants.CASTLE_Y)):
                     self.y += randomMove
                 else:

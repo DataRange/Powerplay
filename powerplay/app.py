@@ -67,6 +67,8 @@ class App:
             self.updateHandler()
             self.screenRefresh()
 
+            self.clock.tick(60)
+
     def eventHandler(self):
 
         for event in pygame.event.get():
@@ -122,8 +124,6 @@ class App:
 
         self.player.draw()
         pygame.display.flip()
-        
-        self.clock.tick(60)
 
     def generateEnemies(self, list):
         for xCoord in list:

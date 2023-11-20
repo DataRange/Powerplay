@@ -32,7 +32,7 @@ class Constants:
         self.SIDEBAR_WIDTH = 140
         self.SIDEBAR_HEIGHT = 800
 
-        self.CASTLE_X = 250
+        self.CASTLE_X = 400
         self.CASTLE_Y = 0
         
 class Level_1:
