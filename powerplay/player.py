@@ -64,6 +64,7 @@ class Player:
             self.y += self.y_velocity
 
     def draw(self):
+
         idy = self.y
         for y in range(len(self.item_img[1])):
             idx = self.x

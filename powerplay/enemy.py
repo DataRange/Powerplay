@@ -53,14 +53,14 @@ class Enemy:
 
     def draw(self):
         if(self.health > 0):
-                    idy = self.y
-                    for y in range(self.constants.ITEM_PIXELS):
-                        idx = self.x
-                        for x in range(self.constants.ITEM_PIXELS):
-                            if self.item_img[y][x] > 0:
-                                pygame.draw.rect(
-                                    self.window, self.item_color[self.item_img[y][x] - 1], pygame.Rect(
-                                        idx, idy, self.constants.ITEM_TILE_WIDTH, self.constants.ITEM_TILE_WIDTH
-                                    ))
-                            idx += self.constants.ITEM_TILE_WIDTH
-                        idy += self.constants.ITEM_TILE_WIDTH
+            idy = self.y
+            for y in range(self.constants.ITEM_PIXELS):
+                idx = self.x
+                for x in range(self.constants.ITEM_PIXELS):
+                    if self.item_img[y][x] > 0:
+                        pygame.draw.rect(
+                            self.window, self.item_color[self.item_img[y][x] - 1], pygame.Rect(
+                                idx, idy, self.constants.ITEM_TILE_WIDTH, self.constants.ITEM_TILE_WIDTH
+                            ))
+                    idx += self.constants.ITEM_TILE_WIDTH
+                idy += self.constants.ITEM_TILE_WIDTH
