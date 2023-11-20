@@ -62,4 +62,4 @@ class Player:
 
     def draw(self):
 
-        self.window.blit(pygame.image.load("powerplay/assets/Reticle.png"), (self.x-100, self.y-100))
+        self.window.blit(pygame.image.load("assets/Reticle.png"), (self.x-100, self.y-100))

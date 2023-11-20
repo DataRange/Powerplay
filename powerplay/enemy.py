@@ -38,5 +38,5 @@ class Enemy:
 
     def draw(self):
         if(self.health > 0):
-            self.window.blit(pygame.image.load("powerplay/assets/Enemy_Melee.png"), (self.x+self.constants.SIDEBAR_WIDTH, self.y))
+            self.window.blit(pygame.image.load("assets/Enemy_Melee.png"), (self.x+self.constants.SIDEBAR_WIDTH, self.y))
         

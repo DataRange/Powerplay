@@ -137,7 +137,7 @@ class App:
         self.window.fill((200, 200, 200))
         self.forge.draw()
         self.player.draw()
-        self.sidebar.draw()
+        # self.sidebar.draw()
         self.inventory.draw()
         for e in self.enemies:
             e.draw()

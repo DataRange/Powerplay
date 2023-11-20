@@ -38,6 +38,8 @@ class Constants:
         self.CASTLE_X = 500
         self.CASTLE_Y = 1000
         
+        self.INTERACT_FORGE = 0
+        
 class Level_1:
     def __init__(self):
         self.constants = Constants()
