@@ -30,7 +30,7 @@ class App:
 
         self.sidebar_dat = GUI_Data()
         self.sidebar = GUI(
-            self, 
+            self,
             (200, self.constants.WINHEIGHT),
             (215, 215, 215),
             self.sidebar_dat,
@@ -77,7 +77,7 @@ class App:
             elif event.type == pygame.KEYDOWN:
 
                 if event.key == self.keybinds["right"]: self.player.set_right(True)
-                
+
                 elif event.key == self.keybinds["left"]: self.player.set_left(True)
 
                 elif event.key == self.keybinds["up"]: self.player.set_up(True)
@@ -89,7 +89,7 @@ class App:
             elif event.type == pygame.KEYUP:
 
                 if event.key == self.keybinds["right"]: self.player.set_right(False)
-                
+
                 elif event.key == self.keybinds["left"]: self.player.set_left(False)
 
                 elif event.key == self.keybinds["up"]: self.player.set_up(False)
@@ -110,6 +110,7 @@ class App:
 
         self.window.fill((200, 200, 200))
         self.inventory.draw()
+        self.castle.draw()
         for e in self.enemies:
             e.draw()
 
@@ -121,7 +122,7 @@ class App:
 
     def generateEnemies(self, list):
         for xCoord in list:
-            self.tempEnemy = Enemy(self, xCoord, self.level_1_constants.MELEE_ENEMY_Y) 
+            self.tempEnemy = Enemy(self, xCoord, self.level_1_constants.MELEE_ENEMY_Y)
             self.enemies.append(self.tempEnemy)
 
 if __name__ == '__main__':
