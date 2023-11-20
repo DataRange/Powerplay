@@ -10,7 +10,7 @@ class Constants:
         self.MAX_HP = 100
 
         self.ENEMY_WIDTH = 100
-        self.MAX_ENEMY_MOVE = 2
+        self.MAX_ENEMY_MOVE = 1
         self.BASE_ENEMY_HP = 1
 
         self.GUI_TEXT_SIZE = 28
@@ -35,8 +35,8 @@ class Constants:
         self.SIDEBAR_WIDTH = 140
         self.SIDEBAR_HEIGHT = 800
 
-        self.CASTLE_X = 500
-        self.CASTLE_Y = 1000
+        self.CASTLE_X = 250
+        self.CASTLE_Y = 0
         
         self.INTERACT_FORGE = 0
         
@@ -47,6 +47,7 @@ class Level_1:
         self.CASTLE_HP = 10
 
         self.MELEE_ENEMY_X = [100,200,300,400,500,600]
+        self.MELEE_ENEMY_Y = 400
 
 
         self.INTERACT_FORGE = 0
@@ -106,5 +107,34 @@ class Image_Maps:
             [2, 1, 1, 1, 1, 1, 2, 0],
             [0, 2, 1, 1, 1, 2, 0, 0],
             [0, 0, 2, 2, 2, 0, 0, 0],
+        ]
+    ]
+
+    ENEMY_MAP = [
+        [(0,0,0), (215, 0, 0)],
+        [
+            [1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 2, 1, 1, 2, 1, 1],
+            [1, 1, 2, 1, 1, 2, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 1],
+        ]
+    ]
+
+    RETICLE_MAP = [
+        [(225,0,0)],
+        [
+            [0, 0, 0, 0, 1, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0, 0, 0],
+            [0, 0, 0, 1, 1, 1, 0, 0, 0],
+            [0, 0, 1, 0, 1, 0, 1, 0, 0],
+            [1, 1, 1, 1, 0, 1, 1, 1, 1],
+            [0, 0, 1, 0, 1, 0, 1, 0, 0],
+            [0, 0, 0, 1, 1, 1, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0, 0, 0],
+            [0, 0, 0, 0, 1, 0, 0, 0, 0],
         ]
     ]
