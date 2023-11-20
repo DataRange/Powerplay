@@ -5,6 +5,7 @@ from constants import Constants
 from player import Player
 from debug_gui import DebugGUI
 from inventory import Inventory
+from forge import Forge
 from items import *
 
 class App:
@@ -22,7 +23,11 @@ class App:
         self.player = Player(self)
         self.debug = DebugGUI(self)
         self.inventory = Inventory(self)
+        self.inventory.add_item(Wood(self))
+        self.inventory.add_item(Stick(self))
         self.inventory.add_item(Rock(self))
+
+        self.forge = Forge(self, (100, 100))
 
         self.show_gui = False
 
@@ -84,6 +89,7 @@ class App:
     def screenRefresh(self):
 
         self.window.fill((200, 200, 200))
+        self.forge.draw()
         self.player.draw()
         self.inventory.draw()
 
