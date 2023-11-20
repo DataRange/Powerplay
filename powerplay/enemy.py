@@ -10,6 +10,8 @@ class Enemy:
         self.constants = game.constants 
         self.window = game.window
 
+        self.castle = game.castle
+
         self.item_color = Image_Maps.ENEMY_MAP[0]
         self.item_img = Image_Maps.ENEMY_MAP[1]
 
@@ -27,7 +29,8 @@ class Enemy:
         self.health = 0
 
     def update(self):
-        if(self.getDistance(self.x, self.y, self.constants.CASTLE_X, self.constants.CASTLE_Y) < 20):#implement a castle hp decrease here
+        if(self.getDistance(self.x, self.y, self.constants.CASTLE_X, self.constants.CASTLE_Y) < 100):#implement a castle hp decrease here
+            self.castle.hurt(self.health)
             self.Death()
 
         else:   

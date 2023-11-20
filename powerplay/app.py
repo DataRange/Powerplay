@@ -27,7 +27,7 @@ class App:
         self.clock = pygame.time.Clock()
 
         self.player = Player(self)
-        self.castle = Castle(self)
+        self.castle = Castle(self, self.level_1_constants.CASTLE_HP)
         self.sidebar = Sidebar(self)
         self.debug = DebugGUI(self)
         self.inventory = Inventory(self)
@@ -139,16 +139,17 @@ class App:
         self.window.fill((200, 200, 200))
         self.forge.draw()
         self.sidebar.draw()
-        self.inventory.draw()
         self.castle.draw()
         for e in self.enemies:
             e.draw()
         self.player.draw()
+        self.inventory.draw()
 
         if self.show_gui: self.debug.draw()
         if self.selected_gui >= 0:
             if self.selected_gui == self.constants.INTERACT_FORGE: self.forge_gui.draw()
         pygame.display.flip()
+        
         self.clock.tick(60)
 
     def generateEnemies(self, list):
