@@ -10,6 +10,7 @@ from enemy import Enemy
 from items import *
 from gui import GUI, GUI_Data
 from castle import Castle
+from map import Map
 
 class App:
 
@@ -24,6 +25,7 @@ class App:
 
         self.clock = pygame.time.Clock()
 
+        self.map = Map(self, self.level_1_constants.PATH_CURVE_POINTS)
         self.player = Player(self)
         self.castle = Castle(self, self.level_1_constants.CASTLE_HP)
         self.debug = DebugGUI(self)
@@ -114,6 +116,7 @@ class App:
     def screenRefresh(self):
 
         self.window.fill((200, 200, 200))
+        self.map.draw()
         self.castle.draw()
         for e in self.enemies:
             e.draw()

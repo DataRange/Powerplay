@@ -5,10 +5,11 @@ import math
 from constants import Image_Maps
 
 class Enemy:
-    def __init__(self, game, x, y):
+    def __init__(self, game, x, y, curve_dict):
 
         self.constants = game.constants 
         self.window = game.window
+        self.clock = game.clock
 
         self.castle = game.castle
 
@@ -17,6 +18,7 @@ class Enemy:
 
         self.x = x
         self.y = y
+        self.curve_dict = curve_dict
 
         self.rect = pygame.Rect(self.x, self.y, self.constants.PLAYER_WIDTH, self.constants.PLAYER_WIDTH)
         self.health = self.constants.BASE_ENEMY_HP
@@ -34,7 +36,11 @@ class Enemy:
             self.Death()
 
         else:   
-            randomGen = random.randint(0,9)
+            #WPI new curve following code
+            print("wow")
+
+            #old random ai code
+            '''randomGen = random.randint(0,9)
             randomMove = random.randint(self.constants.MAX_ENEMY_MOVE - 2, self.constants.MAX_ENEMY_MOVE)
             if(randomGen < 7):
                 if(self.getDistance(self.x, self.y + randomMove, self.constants.CASTLE_X, self.constants.CASTLE_Y) < self.getDistance(self.x, self.y - randomMove, self.constants.CASTLE_X, self.constants.CASTLE_Y)):
@@ -49,8 +55,8 @@ class Enemy:
                 else:
                     if(randomGen == 5):
                         randomMove + 10
-                    self.x -= randomMove
-
+                    self.x -= randomMove'''
+            
     def draw(self):
         if(self.health > 0):
             idy = self.y-self.constants.ITEM_PIXELS

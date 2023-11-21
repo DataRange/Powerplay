@@ -4,6 +4,7 @@ from constants import Image_Maps
 
 class Castle:
     def __init__(self, game, health):
+        
         self.constants = game.constants
         self.window = game.window
         self.clock = game.clock
