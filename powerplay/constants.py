@@ -10,8 +10,9 @@ class Constants:
         self.MAX_HP = 100
 
         self.ENEMY_WIDTH = 100
-        self.MAX_ENEMY_MOVE = 1
+        self.ENEMY_MOVE_SPEED = 300
         self.BASE_ENEMY_HP = 1
+        self.ENEMY_PATH_DETAIL = 100
 
         self.GUI_TEXT_SIZE = 28
         self.TEXT_FONT = "txt"
@@ -34,6 +35,8 @@ class Constants:
 
         self.CASTLE_X = 350
         self.CASTLE_Y = 50
+
+        self.MAP_PATH_DETAIL = 30.3030303
         
 class Level_1:
     
@@ -42,8 +45,8 @@ class Level_1:
 
         self.CASTLE_HP = 100
 
-        self.MELEE_ENEMY_X = [0, 100, 200, 300, 400, 500, 600, 700]
-        self.MELEE_ENEMY_Y = 600
+        self.NUM_MELEE_ENEMIES = 9
+        self.ENEMY_DELAY = 1
 
         self.PATH_CURVE_POINTS = [(self.constants.WINWIDTH,self.constants.WINHEIGHT), (-400,300), (self.constants.CASTLE_X + 50,self.constants.CASTLE_Y + 50)]
 

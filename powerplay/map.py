@@ -17,7 +17,7 @@ class Map:
         p1 = self.curve_points[1]
         p2 = self.curve_points[2]
         #quadratic bezier curve
-        for t in np.arange(0, 1, 0.033):
+        for t in np.arange(0, 1, 1/self.constants.MAP_PATH_DETAIL):
             self.x = p0[0]*(1-t)**2 + 2*(1-t)*t*p1[0] + p2[0]*t**2
             self.y = p0[1]*(1-t)**2 + 2*(1-t)*t*p1[1] + p2[1]*t**2  
             idy = self.y

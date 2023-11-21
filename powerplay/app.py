@@ -1,8 +1,8 @@
 import sys
 import pygame
+import numpy
 
-from constants import Constants
-from constants import Level_1
+from constants import Constants, Level_1
 from player import Player
 from debug_gui import DebugGUI
 from inventory import Inventory
@@ -42,9 +42,11 @@ class App:
             (0, 0)
         )
 
-        self.tempEnemy = Enemy(self, 0, 0)
+        self.xdict = {10000 : 10000, 9999 : 9999}
+        self.ydict = {10000 : 10000, 9999 : 9999}
+        self.generateCurveDict(self.level_1_constants.PATH_CURVE_POINTS)
         self.enemies = []
-        self.generateEnemies(self.level_1_constants.MELEE_ENEMY_X)
+        self.addEnemy()
 
         self.show_gui = False
         self.init_gui()
@@ -128,10 +130,21 @@ class App:
         self.player.draw()
         pygame.display.flip()
 
-    def generateEnemies(self, list):
-        for xCoord in list:
-            self.tempEnemy = Enemy(self, xCoord, self.level_1_constants.MELEE_ENEMY_Y)
-            self.enemies.append(self.tempEnemy)
+    def addEnemy(self):
+        tempEnemy = Enemy(self, self.xdict, self.ydict)
+        self.enemies.append(tempEnemy)
+
+    def generateCurveDict(self, points):
+        p0 = points[0]
+        p1 = points[1]
+        p2 = points[2]
+        #quadratic bezier curve
+        for t in numpy.arange(0, 1, 1 / self.constants.ENEMY_PATH_DETAIL):
+            x = p0[0]*(1-t)**2 + 2*(1-t)*t*p1[0] + p2[0]*t**2
+            y = p0[1]*(1-t)**2 + 2*(1-t)*t*p1[1] + p2[1]*t**2
+            self.xdict[round(t*100)] = x
+            self.ydict[round(t*100)] = y
+            print(t * 100)
 
 if __name__ == '__main__':
     app = App()
