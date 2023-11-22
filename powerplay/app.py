@@ -2,7 +2,7 @@ import sys
 import pygame
 import numpy
 
-from constants import Constants, Level_1
+from constants import Constants, Level_1, Level_2
 from player import Player
 from debug_gui import DebugGUI
 from inventory import Inventory
@@ -11,6 +11,7 @@ from items import *
 from gui import GUI, GUI_Data
 from castle import Castle
 from map import Map
+from spawner import Spawner
 
 class App:
 
@@ -18,16 +19,17 @@ class App:
 
         pygame.init()
         self.constants = Constants()
-        self.level_1_constants = Level_1()
+        self.levels = [Level_1(), Level_2()]
+        self.level_num = 1
 
         self.window = pygame.display.set_mode((self.constants.WINWIDTH, self.constants.WINHEIGHT))
         pygame.display.set_caption("Powerplay")
 
         self.clock = pygame.time.Clock()
 
-        self.map = Map(self, self.level_1_constants.PATH_CURVE_POINTS)
+        self.map = Map(self, self.levels[0].PATH_CURVE_POINTS)
         self.player = Player(self)
-        self.castle = Castle(self, self.level_1_constants.CASTLE_HP)
+        self.castle = Castle(self, self.levels[0].CASTLE_HP)
         self.debug = DebugGUI(self)
         self.inventory = Inventory(self)
         self.inventory.add_item(Wood(self))
@@ -44,9 +46,10 @@ class App:
 
         self.xdict = {10000 : 10000, 9999 : 9999}
         self.ydict = {10000 : 10000, 9999 : 9999}
-        self.generateCurveDict(self.level_1_constants.PATH_CURVE_POINTS)
+        self.generateCurveDict(self.levels[0].PATH_CURVE_POINTS)
         self.enemies = []
         self.addEnemy()
+        self.spawner = Spawner(self, self.level_num)
 
         self.show_gui = False
         self.init_gui()
@@ -112,8 +115,11 @@ class App:
         self.inventory.update()
         self.player.update()
         self.debug.update()
+        self.spawner.update()
         for e in self.enemies:
             e.update()
+        if(self.spawner.isDone()):
+            self.nextLevel()
 
     def screenRefresh(self):
 
@@ -145,6 +151,13 @@ class App:
             self.xdict[round(t*100)] = x
             self.ydict[round(t*100)] = y
             print(t * 100)
+
+    def nextLevel(self):
+        self.level_num += 1
+        self.map = Map(self, self.levels[self.level_num - 1].PATH_CURVE_POINTS)
+        self.castle = Castle(self, self.levels[self.level_num - 1].CASTLE_HP)
+        self.generateCurveDict(self.levels[self.level_num - 1].PATH_CURVE_POINTS)
+        self.spawner = Spawner(self, self.level_num)
 
 if __name__ == '__main__':
     app = App()

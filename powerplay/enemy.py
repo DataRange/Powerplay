@@ -50,24 +50,9 @@ class Enemy:
                 self.y = self.ydict.get(self.count + 0.0)
                 self.count += 1
 
-            #old random ai code
-            '''randomGen = random.randint(0,9)
-            randomMove = random.randint(self.constants.MAX_ENEMY_MOVE - 2, self.constants.MAX_ENEMY_MOVE)
-            if(randomGen < 7):
-                if(self.getDistance(self.x, self.y + randomMove, self.constants.CASTLE_X, self.constants.CASTLE_Y) < self.getDistance(self.x, self.y - randomMove, self.constants.CASTLE_X, self.constants.CASTLE_Y)):
-                    self.y += randomMove
-                else:
-                    self.y -= randomMove
-            else:
-                if(self.getDistance(self.x + randomMove, self.y, self.constants.CASTLE_X, self.constants.CASTLE_Y) < self.getDistance(self.x - randomMove, self.y, self.constants.CASTLE_X, self.constants.CASTLE_Y)):
-                    if(randomGen == 5):
-                        randomMove + 10
-                    self.x += randomMove
-                else:
-                    if(randomGen == 5):
-                        randomMove + 10
-                    self.x -= randomMove'''
-            
+    def isDead(self):
+        return self.health == 0
+
     def draw(self):
         if(self.health > 0):
             idy = self.y + 20

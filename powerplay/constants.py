@@ -46,7 +46,19 @@ class Level_1:
         self.CASTLE_HP = 100
 
         self.NUM_MELEE_ENEMIES = 9
-        self.ENEMY_DELAY = 1
+        self.ENEMY_DELAY = 2
+
+        self.PATH_CURVE_POINTS = [(self.constants.WINWIDTH,self.constants.WINHEIGHT), (-400,300), (self.constants.CASTLE_X + 50,self.constants.CASTLE_Y + 50)]
+
+class Level_2:
+        
+    def __init__(self):
+        self.constants = Constants()
+
+        self.CASTLE_HP = 100
+
+        self.NUM_MELEE_ENEMIES = 2
+        self.ENEMY_DELAY = 2
 
         self.PATH_CURVE_POINTS = [(self.constants.WINWIDTH,self.constants.WINHEIGHT), (-400,300), (self.constants.CASTLE_X + 50,self.constants.CASTLE_Y + 50)]
 
